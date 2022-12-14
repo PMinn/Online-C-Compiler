@@ -5,110 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Compiler</title>
-    <style>
-        .flex {
-            display: flex;
-        }
-
-        textarea {
-            width: 100vw;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/index.css">
 </head>
 
 <body>
-    <div class="flex">
-        <select id="language"></select>
-        <button onclick="compile()">compile</button>
+    <div id="bar"></div>
+    <div class="play" onclick="exe()">▶</div>
+
+    <div class="textarea-out">
+        <textarea cols="30" rows="10" id="textarea" wrap="off"></textarea>
     </div>
-    <textarea cols="30" rows="10" id="textarea"></textarea>
-    <script>
-        const languageNumbers = {
-            "C#": 1,
-            "VB.NET": 2,
-            "F#": 3,
-            "Java": 4,
-            "Python": 5,
-            "C (gcc)": 6,
-            "C++ (gcc)": 7,
-            "Php": 8,
-            "Pascal": 9,
-            "Objective-C": 10,
-            "Haskell": 11,
-            "Ruby": 12,
-            "Perl": 13,
-            "Lua": 14,
-            "Nasm": 15,
-            "Sql Server": 16,
-            "Javascript": 17,
-            "Lisp": 18,
-            "Prolog": 19,
-            "Go": 20,
-            "Scala": 21,
-            "Scheme": 22,
-            "Node.js": 23,
-            "Python 3": 24,
-            "Octave": 25,
-            "C (clang)": 26,
-            "C++ (clang)": 27,
-            "C++ (vc++)": 28,
-            "C (vc)": 29,
-            "D": 30,
-            "R": 31,
-            "Tcl": 32,
-            "MySQL": 33,
-            "PostgreSQL": 34,
-            "Oracle": 35,
-            "Swift": 37,
-            "Bash": 38,
-            "Ada": 39,
-            "Erlang": 40,
-            "Elixir": 41,
-            "Ocaml": 42,
-            "Kotlin": 43,
-            "Brainf***": 44,
-            "Fortran": 45,
-            "Rust": 46,
-            "Clojure": 47
-        }
-
-        Object.keys(languageNumbers).forEach(language => {
-            var option = document.createElement('option');
-            if (language == "C++ (gcc)") {
-                option.selected = true;
-            }
-            option.innerText = language;
-            option.value = language;
-            document.getElementById('language').appendChild(option);
-        })
-
-        document.getElementById('textarea').value = `#include<stdio.h>
-int main(){
-    
-}`;
-
-        function compile() {
-            var to_compile = {
-                "LanguageChoice": "1",
-                "Program": languageNumbers[document.getElementById('language').value],
-                "Input": "",
-                "CompilerArgs": ""
-            };
-            fetch('https://rextester.com/rundotnet/api', {
-                method: 'POST',
-                body: JSON.stringify(to_compile),
-                headers: new Headers({
-                    'Content-Type': 'application/json'
-                })
-            })
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (myJson) {
-                    console.log(myJson);
-                });
-        }
-    </script>
+    <div class="result-out">
+        <textarea cols="30" rows="3" id="result" wrap="off"></textarea>
+    </div>
+    <script src="./js/index.js"></script>
 </body>
 
 </html>

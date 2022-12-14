@@ -1,0 +1,69 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #242424;
+}
+
+.textarea-out {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 70vh;
+}
+
+.result-out {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}
+
+textarea {
+    width: 90vw;
+    border: 1px #999999 solid;
+    background-color: #242424;
+    color: #fff;
+    outline: none;
+    font-size: 1.2rem;
+    overflow: scroll;
+}
+
+#textarea {
+    height: 60vh;
+}
+
+#result {
+    height: 20vh;
+}
+
+.play {
+    position: absolute;
+    right: 5vw;
+    bottom: 5vw;
+    padding: 5vw;
+    border-radius: 10vw;
+    font-size: 30px;
+    line-height: 30px;
+    height: 30px;
+    width: 30px;
+    color: #fff;
+    text-align: center;
+    background-color: rgba(136, 255, 0, 0.637);
+}
+
+#bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(9, 65, 168);
+    width: 100vw;
+    height: 5px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .5s;
+}
