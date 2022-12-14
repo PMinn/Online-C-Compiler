@@ -8,21 +8,6 @@ body {
     background-color: #242424;
 }
 
-.textarea-out {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 70vh;
-}
-
-.result-out {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-}
-
 textarea {
     width: 90vw;
     border: 1px #999999 solid;
@@ -33,8 +18,23 @@ textarea {
     overflow: scroll;
 }
 
+.textarea-out {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 50vh;
+}
+
 #textarea {
-    height: 60vh;
+    height: 40vh;
+}
+
+.result-out {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
 }
 
 #result {
@@ -42,7 +42,7 @@ textarea {
 }
 
 .play {
-    position: absolute;
+    position: fixed;
     right: 5vw;
     bottom: 5vw;
     padding: 5vw;
@@ -57,7 +57,7 @@ textarea {
 }
 
 #bar {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     background-color: rgb(9, 65, 168);
