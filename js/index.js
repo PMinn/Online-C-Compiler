@@ -4,9 +4,9 @@ int main(){
     cout<<"hello world"<<endl;
 }`;
 
-function upload() {
-    const formData = new FormData()
-    formData.append('code', document.getElementById('textarea').value)
+function c_upload() {
+    const formData = new FormData();
+    formData.append('code', document.getElementById('textarea').value);
     return fetch('https://Online-C-Compiler.panalan.repl.co/upload', {
         method: 'POST',
         body: formData
@@ -18,60 +18,55 @@ function upload() {
         })
 }
 
-function compile(filename) {
-    const formData = new FormData()
-    formData.append('filename', filename)
+function c_compile(filename) {
+    const formData = new FormData();
+    formData.append('filename', filename);
     return fetch('https://Online-C-Compiler.panalan.repl.co/compile', {
         method: 'POST',
         body: formData
     })
         .then(response => response.json())
         .then(response => {
-            if (response.success) {
-                document.getElementById('bar').style.transform = 'scaleX(0.666)';
-                return filename;
-            } else {
-                return Promise.reject({
-                    reason: '編譯失敗',
-                    error: response.error
-                });
-            }
+            if (!response.success) return Promise.reject({ reason: '編譯失敗', error: response.error });
+            document.getElementById('bar').style.transform = 'scaleX(0.666)';
+            return filename;
         })
 }
 
-function run(filename) {
-    const formData = new FormData()
-    formData.append('filename', filename)
-    fetch('https://Online-C-Compiler.panalan.repl.co/run', {
+function c_execute(filename) {
+    const formData = new FormData();
+    formData.append('filename', filename);
+    formData.append('input', document.getElementById('inputTextarea').value);
+    return fetch('https://Online-C-Compiler.panalan.repl.co/execute', {
         method: 'POST',
         body: formData
     })
         .then(response => response.json())
         .then(response => {
-            if (response.returncode != 0) {
-                return Promise.reject({
-                    reason: '執行失敗',
-                    error: response.error
-                });
-            } else {
-                document.getElementById('bar').style.transform = 'scaleX(1)';
-                setTimeout(() => {
-                    document.getElementById('bar').style.transform = 'scaleX(0)';
-                }, 3000);
-                document.getElementById('result').style.color = '#fff';
-                document.getElementById('result').value = response.result;
-                console.log(response);
-            }
-
+            if (response.returncode != 0) return Promise.reject({ reason: '執行失敗', error: response.error });
+            document.getElementById('bar').style.transform = 'scaleX(1)';
+            setTimeout(() => {
+                document.getElementById('bar').style.transform = 'scaleX(0)';
+            }, 3000);
+            document.getElementById('result').style.color = '#fff';
+            document.getElementById('result').value = response.result;
+            document.getElementById('spend').innerText = response.spend;
+            console.log(response);
         })
 }
 
-function exe() {
-    upload()
-        .then(compile)
-        .then(run)
+function run() {
+    document.querySelector('.play').style.opacity = '0';
+    c_upload()
+        .then(c_compile)
+        .then(c_execute)
         .catch(err => {
             document.getElementById('result').style.color = 'red';
             document.getElementById('result').value = err.reason + '\n\n' + err.error;
+            document.getElementById('spend').innerText = '';
+
+        })
+        .finally(() => {
+            document.querySelector('.play').style.opacity = '1';
         })
 }

@@ -11,7 +11,7 @@
 
 <body>
     <div id="bar"></div>
-    <div class="play" onclick="exe()">
+    <div class="play" onclick="run()">
         <svg width="30" height="30" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
                 d="M3 7.33761C3 2.58639 8.08368 0.177285 12.0217 2.27008C12.0446 2.28222 12.0671 2.29495 12.0893 2.30826L30.0453 13.0771C33.9849 15.2998 33.9849 20.6354 30.0453 22.8581L12.0893 33.627L12.0701 33.6383C8.06754 35.9588 3 33.3067 3 28.7474V7.33761ZM10.5822 4.90258C8.33198 3.73209 6 5.21176 6 7.33761V28.7474C6 30.7729 8.36369 32.3115 10.5566 31.048L28.5205 20.2745C28.5334 20.2667 28.5465 20.2591 28.5597 20.2518C30.4801 19.1775 30.4801 16.7578 28.5597 15.6835C28.5521 15.6792 28.5445 15.6749 28.537 15.6705C28.5315 15.6673 28.526 15.6641 28.5205 15.6608L10.5822 4.90258Z"
@@ -19,11 +19,20 @@
         </svg>
     </div>
 
-    <div class="textarea-out">
+    <div class="textarea-out out">
+        <h1>code</h1>
         <textarea id="textarea" wrap="off"></textarea>
     </div>
-    <div class="result-out">
-        <textarea id="result" wrap="off"></textarea>
+    <div class="out">
+        <h1>input</h1>
+        <textarea id="inputTextarea" wrap="off"></textarea>
+    </div>
+    <div class="out">
+        <h1>output</h1>
+        <textarea id="result" wrap="off" disabled="true"></textarea>
+    </div>
+    <div class="out">
+        <div class="spend-block">耗時:<div id="spend"></div>ms</div>
     </div>
     <script src="./js/index.js"></script>
 </body>

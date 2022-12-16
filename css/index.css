@@ -8,6 +8,17 @@ body {
     background-color: #242424;
 }
 
+*::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+    background-color: #242424;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: #666666;
+    border-radius: 7px;
+}
+
 textarea {
     width: 90vw;
     border: 1px #999999 solid;
@@ -18,35 +29,39 @@ textarea {
     overflow: scroll;
 }
 
-.textarea-out {
+.out {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100vw;
-    height: 50vh;
+    flex-direction: column;
+    color: #fff;
+
+    margin-bottom: 1vh;
+}
+
+.out h1 {
+    margin: 5px auto;
 }
 
 #textarea {
     height: 40vh;
 }
 
-.result-out {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
+#inputTextarea {
+    height: 15vh;
 }
 
 #result {
-    height: 20vh;
+    height: 15vh;
 }
 
 .play {
     position: fixed;
     right: 5vw;
     bottom: 5vw;
-    padding: 5vw;
-    border-radius: 10vw;
+    padding: 30px;
+    border-radius: 999px;
     font-size: 30px;
     line-height: 30px;
     height: 30px;
@@ -54,6 +69,9 @@ textarea {
     color: #fff;
     text-align: center;
     background-color: rgba(136, 255, 0, 0.637);
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.5s;
 }
 
 #bar {
@@ -66,4 +84,9 @@ textarea {
     transform: scaleX(0);
     transform-origin: left;
     transition: transform .5s;
+}
+
+.spend-block {
+    width: 90vw;
+    display: flex;
 }
