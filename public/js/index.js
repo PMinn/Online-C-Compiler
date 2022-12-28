@@ -74,3 +74,7 @@ function run() {
 
 
 fetch('/api/compiler?pid=0&cid=5')
+    .then(response => response.text())
+    .then(response => {
+        console.log(response)
+    })
