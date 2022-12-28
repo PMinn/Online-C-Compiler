@@ -1,16 +1,24 @@
-// import * as child from 'child_process';
-import os from 'os';
+import * as child from 'child_process';
 
 export default function handler(req, res) {
-    // const { cmd } = req.query;
-    // var p = child.exec("g++", (error, stdout, stderr) => {
-    //     if (error) {
-    //         res.status(400).end(error.toString())
-    //     } else if (stderr) {
-    //         res.status(400).end(stderr.toString())
-    //     } else {
-    //         res.end("stdout:\n"+stdout)
-    //     }
-    // });
-    res.end("type:" + os.type() + "\nrelease:" + os.release() + "\nplatform:" + os.platform())
+    const { cmd } = req.query;
+    var p = child.exec(cmd, (error, stdout, stderr) => {
+        if (error) {
+            res.status(400).json({
+                cmd,
+                error: 1,
+                errorType: 'error',
+                message: error.toString()
+            })
+        } else if (stderr) {
+            res.status(400).json({
+                cmd,
+                error: 1,
+                errorType: 'stderr',
+                message: stderr.toString()
+            })
+        } else {
+            res.status(400).json({ stdout })
+        }
+    });
 }
