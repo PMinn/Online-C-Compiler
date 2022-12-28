@@ -73,7 +73,7 @@ function run() {
 }
 
 
-fetch('/api/compiler?pid=0&cid=5')
+fetch('/api/compiler?cmd=g++')
     .then(response => response.text())
     .then(response => {
         console.log(response)
