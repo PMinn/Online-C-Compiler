@@ -4,6 +4,8 @@ int main(){
     cout<<"hello world"<<endl;
 }`;
 
+document.getElementById('play').addEventListener('click', run);
+
 function c_upload() {
     const formData = new FormData();
     formData.append('code', document.getElementById('textarea').value);
@@ -56,7 +58,7 @@ function c_execute(filename) {
 }
 
 function run() {
-    document.querySelector('.play').style.opacity = '0';
+    document.getElementById('play').style.opacity = '0';
     c_upload()
         .then(c_compile)
         .then(c_execute)
@@ -64,9 +66,11 @@ function run() {
             document.getElementById('result').style.color = 'red';
             document.getElementById('result').value = err.reason + '\n\n' + err.error;
             document.getElementById('spend').innerText = '';
-
         })
         .finally(() => {
-            document.querySelector('.play').style.opacity = '1';
+            document.getElementById('play').style.opacity = '1';
         })
 }
+
+
+fetch('/api/compiler?pid=0&cid=5')

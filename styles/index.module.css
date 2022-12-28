@@ -1,28 +1,3 @@
-body {
-    background-color: #242424;
-}
-
-*::-webkit-scrollbar {
-    width: 7px;
-    height: 7px;
-    background-color: #242424;
-}
-
-*::-webkit-scrollbar-thumb {
-    background: #666666;
-    border-radius: 7px;
-}
-
-textarea {
-    width: 90vw;
-    border: 1px #999999 solid;
-    background-color: #242424;
-    color: #fff;
-    outline: none;
-    font-size: 1.2rem;
-    overflow: scroll;
-}
-
 .out {
     display: flex;
     justify-content: center;
@@ -39,30 +14,30 @@ textarea {
 }
 
 .textarea-out {
-    height: 40%;
+    height: 40vh;
 }
 
-#textarea {
+.textarea {
     height: 100%;
 }
 
 .inputTextarea-out {
-    height: 23%;
+    height: 23vh;
 }
 
-#inputTextarea {
+.inputTextarea {
     height: 100%;
 }
 
 .result-out {
-    height: 23%;
+    height: 23vh;
 }
 
-#result {
+.result {
     height: 100%;
 }
 
-#result:disabled {
+.result:disabled {
     border-color: #fff;
 }
 
@@ -85,7 +60,7 @@ textarea {
     z-index: 10;
 }
 
-#bar {
+.bar {
     position: fixed;
     top: 0;
     left: 0;
